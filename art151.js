@@ -34,10 +34,10 @@ function hexMat(hex, scene){
 //recreates p5 lerpColor functionalith with babylon
 function babLerpColor(c1, c2, lerp, scene){
     //convert from hex if hashtag present in input
-    if(c1.indexOf('#')>0){
+    if(c1.indexOf('#')==0){
         c1 = BABYLON.Color3.FromHexString(c1, scene);
     }
-    if(c2.indexOf('#')>0){
+    if(c2.indexOf('#')==0){
         c2 = BABYLON.Color3.FromHexString(c2, scene);
     }
     let c = {};
