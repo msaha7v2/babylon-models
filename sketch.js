@@ -35,11 +35,14 @@ var createScene = function () {
     newsphere.material = fileMat('https://images.pexels.com/photos/53594/blue-clouds-day-fluffy-53594.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', scene);
     var ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 6, height: 6}, scene);
 
+    var colsphere = createSphere(0, 1, 2, 3);
+    newsphere.material = hexMat('#ff0000');
+    console.log(newsphere.material.diffuseColor);
     return scene;
 };
         window.initFunction = async function() {
-            
-            
+
+
             var asyncEngineCreation = async function() {
                 try {
                 return createDefaultEngine();
@@ -53,7 +56,7 @@ var createScene = function () {
 if (!engine) throw 'engine should not be null.';
 startRenderLoop(engine, canvas);
 window.scene = createScene();};
-initFunction().then(() => {sceneToRender = scene                    
+initFunction().then(() => {sceneToRender = scene
 });
 
 // Resize
