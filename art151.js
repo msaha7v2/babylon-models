@@ -82,6 +82,7 @@ class meshModel {
       
     }
     //assigns an array of this model's meshes to this.meshes and returns it
+    //MUST BE EXECUTED IN scene.executeWhenReady(() => {})
     getMeshes(meshes) {
         this.meshes = meshes.filter(mesh => mesh.name.slice(0, this.name.length) == this.name);
         return this.meshes;
