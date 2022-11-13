@@ -81,16 +81,10 @@ class meshModel {
         );
       
     }
-    //assigns an array of meshes to this.meshes and returns it
+    //assigns an array of this model's meshes to this.meshes and returns it
     getMeshes(meshes) {
-        var these_meshes = [];
-        for (var mesh of meshes) {
-            if (mesh.name.slice(0, this.name.length) == this.name) {
-                these_meshes.push(mesh);
-            }
-        }
-        this.meshes = these_meshes;
-        return these_meshes; 
+        this.meshes = meshes.filter(mesh => mesh.name.slice(0, this.name.length) == this.name);
+        return this.meshes;
     } 
 
     //set x, y, and z rotation to values specified by
