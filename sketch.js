@@ -1,5 +1,5 @@
 var canvas = document.getElementById("renderCanvas");
-
+var meshlist = []; 
 var startRenderLoop = function (engine, canvas) {
     engine.runRenderLoop(function () {
         if (sceneToRender && sceneToRender.activeCamera) {
@@ -17,7 +17,7 @@ var createScene = function () {
     var scene = new BABYLON.Scene(engine);
 
     // This creates and positions a free camera (non-mesh)
-    var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 5, -10), scene);
+    var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 10, 0), scene);
 
     // This targets the camera to scene origin
     camera.setTarget(BABYLON.Vector3.Zero());
@@ -31,18 +31,28 @@ var createScene = function () {
     // Default intensity is 1. Let's dim the light a small amount
     light.intensity = 0.7;
 
-    var newsphere = createSphere(0, 1, 0, 2);
-    newsphere.material = fileMat('https://images.pexels.com/photos/53594/blue-clouds-day-fluffy-53594.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', scene);
-    var ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 6, height: 6}, scene);
+    //var newsphere = createSphere(0, 1, 0, 2);
+    // newsphere.material = fileMat('https://images.pexels.com/photos/53594/blue-clouds-day-fluffy-53594.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', scene);
+    // // var ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 6, height: 6}, scene);
 
-    var colsphere = createSphere(0, 1, 2, 3);
-    newsphere.material = hexMat('#ff0000');
-    console.log(newsphere.material.diffuseColor);
+    // var colsphere = createSphere(0, 1, 2, 3);
+    // newsphere.material = hexMat('#ff0000');
+    
+    var hat = new meshModel('./skull.babylon', 0.2, 0, 0, 0, 'skull', scene);
+    scene.executeWhenReady(() => {
+        hat.getMeshes(scene.meshes);
+        hat.rotate(1,2,3);
+        console.log(hat.meshes);
+    }); 
+
+        
+   
+
+
+    
     return scene;
 };
         window.initFunction = async function() {
-
-
             var asyncEngineCreation = async function() {
                 try {
                 return createDefaultEngine();
