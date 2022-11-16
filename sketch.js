@@ -1,3 +1,10 @@
+let settings = {
+    path: 'x.obj',
+          color: {r:1, g:0, b:0},
+          scale: 1,
+          positon: {x: 1, y: 1, z: 1},
+          rotation: {x: 0, y:0, z: 0}
+}
 var canvas = document.getElementById("renderCanvas");
 var meshlist = []; 
 var startRenderLoop = function (engine, canvas) {
@@ -31,8 +38,23 @@ var createScene = function () {
     // Default intensity is 1. Let's dim the light a small amount
     light.intensity = 0.7;
 
-    var newsphere = createSphere(0, 1, 0, 2);
-    newsphere.material = hexMat('#ff0000');
+    //importing the object
+    
+    BABYLON.SceneLoader.ImportMesh(
+        null,
+         "https://models.babylonjs.com/vintageDeskFan/",
+        "vintageFan_animated.gltf",
+        scene,
+        function (meshes) { 
+            meshes[0].rotation.y += Math.PI/2;
+            var blueMat = new BABYLON.StandardMaterial('blue', scene);
+            blueMat.diffuseColor = new BABYLON.Color3(165/255,42/255,42/255);
+            meshes[0].material = blueMat; 
+            meshes[0].position = new BABYLON.Vector3(1, 1, 1);
+            //meshes[0].rotation.x += MATH.PI/2; 
+            meshes[0].scaling = new BABYLON.Vector3(0.06, 0.06, 0.06);
+                     
+    });
     
     return scene;
 };
