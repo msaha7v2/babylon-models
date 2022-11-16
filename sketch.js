@@ -42,17 +42,17 @@ var createScene = function () {
     
     BABYLON.SceneLoader.ImportMesh(
         null,
-         "https://models.babylonjs.com/vintageDeskFan/",
-        "vintageFan_animated.gltf",
+         "https://models.babylonjs.com/pirateFort/",
+        "pirateFort.gltf",
         scene,
         function (meshes) { 
             meshes[0].rotation.y += Math.PI/2;
-            var blueMat = new BABYLON.StandardMaterial('blue', scene);
+            var blueMat = new BABYLON.StandardMaterial('grey', scene);
             blueMat.diffuseColor = new BABYLON.Color3(165/255,42/255,42/255);
             meshes[0].material = blueMat; 
-            meshes[0].position = new BABYLON.Vector3(1, 1, 1);
-            //meshes[0].rotation.x += MATH.PI/2; 
-            meshes[0].scaling = new BABYLON.Vector3(0.06, 0.06, 0.06);
+            meshes[0].position = new BABYLON.Vector3(0, 0, 0);
+            meshes[0].rotation.x += MATH.PI/2; 
+            meshes[0].scaling = new BABYLON.Vector3(0.10, 0.10, 0.10);
                      
     });
     
